@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Calendar extends Schedule{
+public final class Calendar extends Schedule{
 
     private LocalDateTime eventDateTime;
 }

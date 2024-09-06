@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Todo extends Schedule{
+public final class Todo extends Schedule{
 
     private Boolean completed;
 }
