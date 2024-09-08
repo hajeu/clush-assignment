@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 
@@ -13,14 +14,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public final class Calendar extends Schedule {
 
-    private LocalDateTime eventDateTime;
+    @Length(max = 300)
+    private String description;
 
     public Calendar(
             @NonNull String title,
             String description,
-            @NonNull LocalDateTime eventDateTime
+            @NonNull LocalDateTime dueDate
     ) {
-        super(title, description);
-        this.eventDateTime = eventDateTime;
+        super(title, dueDate);
+        this.description = description;
     }
 }

@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -15,10 +17,10 @@ public final class Todo extends Schedule {
 
     public Todo(
             @NonNull String title,
-            String description,
+            @NonNull LocalDateTime dueDateTime,
             @NonNull Boolean completed
     ) {
-        super(title, description);
+        super(title, dueDateTime);
         this.completed = completed;
     }
 }
