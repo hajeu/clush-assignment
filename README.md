@@ -15,7 +15,7 @@ JPA는 Java Persistence API의 약자로 자바 진영에서 ORM 기술 표준�
 데이터베이스와의 상호작용을 추상화하여 CRUD 작업을 더 간단하게 처리할 수 있고, 리포지토리 인터페이스를 사용하여 쿼리를 메소드로 정의하고 사용할 수 있습니다.
 
 ## API 명세서
-[API명세서](https://four-zone-469.notion.site/Clush-Assignment-Schedule-API-53f2b48f64844ad2b62f7249ae32563c)여기를 참고하세요.
+[API명세서](https://four-zone-469.notion.site/Clush-Assignment-Schedule-API-53f2b48f64844ad2b62f7249ae32563c)는 여기를 참고하세요.
 
 ## CRUD외 추가 업무 API
 구현 예정
