@@ -34,5 +34,15 @@ public abstract class Schedule {
         this.title = title;
         this.dueDateTime = dueDateTime;
     }
+
+    public Schedule(
+            @NonNull Long id,
+            @NonNull String title,
+            @NonNull LocalDateTime dueDateTime
+    ) {
+        this.id = id;
+        this.title = title;
+        this.dueDateTime = dueDateTime;
+    }
 }
 

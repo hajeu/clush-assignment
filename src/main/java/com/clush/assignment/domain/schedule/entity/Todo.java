@@ -23,4 +23,18 @@ public final class Todo extends Schedule {
         super(title, dueDateTime);
         this.completed = completed;
     }
+
+    public Todo(
+            @NonNull Long id,
+            @NonNull String title,
+            @NonNull LocalDateTime dueDateTime,
+            @NonNull Boolean completed
+    ) {
+        super(id, title, dueDateTime);
+        this.completed = completed;
+    }
+
+    public void toggleCompleted() {
+        this.completed = !this.completed;
+    }
 }

@@ -8,6 +8,7 @@ import com.clush.assignment.domain.schedule.repository.TodoRepository;
 import com.clush.assignment.domain.schedule.util.LocalDateTimeUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +19,7 @@ public class QueryTodoService {
 
     private final TodoRepository todoRepository;
 
+    @Transactional(readOnly = true)
     public List<BasicTodoResDto> execute(DateReqDto dateReqDto) {
         LocalDate reqDate = dateReqDto.reqDate();
 

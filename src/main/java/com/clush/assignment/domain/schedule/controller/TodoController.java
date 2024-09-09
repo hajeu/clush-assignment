@@ -3,9 +3,7 @@ package com.clush.assignment.domain.schedule.controller;
 import com.clush.assignment.domain.schedule.dto.request.BasicTodoReqDto;
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
 import com.clush.assignment.domain.schedule.dto.response.BasicTodoResDto;
-import com.clush.assignment.domain.schedule.service.CreateTodoService;
-import com.clush.assignment.domain.schedule.service.QueryAllTodoService;
-import com.clush.assignment.domain.schedule.service.QueryTodoService;
+import com.clush.assignment.domain.schedule.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +18,8 @@ public class TodoController {
     private final CreateTodoService createTodoService;
     private final QueryTodoService queryTodoService;
     private final QueryAllTodoService queryAllTodoService;
+    private final UpdateTodoByIdService updateTodoByIdService;
+    private final UpdateTodoCompletedByIdService updateTodoCompletedByIdService;
 
     @PostMapping
     public ResponseEntity<Void> create(
@@ -39,5 +39,22 @@ public class TodoController {
     @GetMapping("/all")
     public ResponseEntity<List<BasicTodoResDto>> findAll() {
         return ResponseEntity.ok(queryAllTodoService.execute());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> update(
+            @PathVariable("id") Long id,
+            @RequestBody BasicTodoReqDto basicTodoReqDto
+    ) {
+        updateTodoByIdService.execute(id, basicTodoReqDto);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> toggleCompleted(
+            @PathVariable("id") Long id
+    ) {
+        updateTodoCompletedByIdService.execute(id);
+        return ResponseEntity.noContent().build();
     }
 }
