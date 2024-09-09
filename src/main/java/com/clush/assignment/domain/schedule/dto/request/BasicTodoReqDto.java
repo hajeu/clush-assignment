@@ -4,13 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public record BasicTodoReqDto(
         @NotBlank
         @Size(max = 20)
         String title,
         @NotNull
-        LocalDateTime dueDateTime
+        LocalDate dueDate
 ) {
 }

@@ -21,7 +21,7 @@ public class UpdateTodoByIdService {
         Todo updatedTodo = new Todo(
                 id,
                 basicTodoReqDto.title(),
-                basicTodoReqDto.dueDateTime(),
+                basicTodoReqDto.dueDate().atStartOfDay(),
                 todo.getCompleted()
         );
 

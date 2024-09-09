@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class QueryAllTodoService {
+public class QueryAllTodosService {
 
     private final TodoRepository todoRepository;
 
