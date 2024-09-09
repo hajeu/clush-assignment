@@ -4,6 +4,7 @@ import com.clush.assignment.domain.schedule.dto.request.CalendarReqDto;
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
 import com.clush.assignment.domain.schedule.dto.response.CalendarResDto;
 import com.clush.assignment.domain.schedule.service.calendar.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class CalendarController {
 
     @PostMapping
     public ResponseEntity<Void> create(
-            @RequestBody CalendarReqDto calendarReqDto
+            @RequestBody @Valid CalendarReqDto calendarReqDto
     ) {
         createCalendarsService.execute(calendarReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -31,7 +32,7 @@ public class CalendarController {
 
     @GetMapping
     public ResponseEntity<List<CalendarResDto>> find(
-            @RequestBody DateReqDto dateReqDto
+            @RequestBody @Valid DateReqDto dateReqDto
     ) {
         return ResponseEntity.ok(queryCalendarsService.execute(dateReqDto));
     }
@@ -44,7 +45,7 @@ public class CalendarController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(
             @PathVariable("id") Long id,
-            @RequestBody CalendarReqDto calendarReqDto
+            @RequestBody @Valid CalendarReqDto calendarReqDto
     ) {
         updateCalendarByIdService.execute(id, calendarReqDto);
         return ResponseEntity.noContent().build();
