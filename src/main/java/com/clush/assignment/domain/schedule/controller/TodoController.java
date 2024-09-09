@@ -4,6 +4,7 @@ import com.clush.assignment.domain.schedule.dto.request.TodoReqDto;
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
 import com.clush.assignment.domain.schedule.dto.response.TodoResDto;
 import com.clush.assignment.domain.schedule.service.todo.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class TodoController {
 
     @PostMapping
     public ResponseEntity<Void> create(
-            @RequestBody TodoReqDto todoReqDto
+            @RequestBody @Valid TodoReqDto todoReqDto
     ) {
         createTodoService.execute(todoReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -32,7 +33,7 @@ public class TodoController {
 
     @GetMapping
     public ResponseEntity<List<TodoResDto>> find(
-            @RequestBody DateReqDto dateReqDto
+            @RequestBody @Valid DateReqDto dateReqDto
     ) {
         return ResponseEntity.ok(queryTodosService.execute(dateReqDto));
     }
@@ -45,7 +46,7 @@ public class TodoController {
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(
             @PathVariable("id") Long id,
-            @RequestBody TodoReqDto todoReqDto
+            @RequestBody @Valid TodoReqDto todoReqDto
     ) {
         updateTodoByIdService.execute(id, todoReqDto);
         return ResponseEntity.noContent().build();
