@@ -15,7 +15,7 @@ public class CreateTodoService {
     public void execute(BasicTodoReqDto basicTodoReqDto) {
         Todo todo = new Todo(
                 basicTodoReqDto.title(),
-                basicTodoReqDto.dueDateTime(),
+                basicTodoReqDto.dueDate().atStartOfDay(),
                 false
         );
 
