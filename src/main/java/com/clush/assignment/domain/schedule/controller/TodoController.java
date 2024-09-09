@@ -5,6 +5,7 @@ import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
 import com.clush.assignment.domain.schedule.dto.response.BasicTodoResDto;
 import com.clush.assignment.domain.schedule.service.todo.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class TodoController {
             @RequestBody BasicTodoReqDto basicTodoReqDto
     ) {
         createTodoService.execute(basicTodoReqDto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
