@@ -21,7 +21,6 @@ public class TodoController {
     private final QueryAllTodosService queryAllTodosService;
     private final UpdateTodoByIdService updateTodoByIdService;
     private final UpdateTodoCompletedByIdService updateTodoCompletedByIdService;
-    private final DeleteTodoByIdService deleteTodoByIdService;
 
     @PostMapping
     public ResponseEntity<Void> create(
@@ -57,14 +56,6 @@ public class TodoController {
             @PathVariable("id") Long id
     ) {
         updateTodoCompletedByIdService.execute(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(
-            @PathVariable("id") Long id
-    ) {
-        deleteTodoByIdService.execute(id);
         return ResponseEntity.noContent().build();
     }
 }

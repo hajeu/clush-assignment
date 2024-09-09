@@ -20,7 +20,6 @@ public class CalendarController {
     private final QueryCalendarsService queryCalendarsService;
     private final QueryAllCalendarsService queryAllCalendarsService;
     private final UpdateCalendarByIdService updateCalendarByIdService;
-    private final DeleteCalendarByIdService deleteCalendarByIdService;
 
     @PostMapping
     public ResponseEntity<Void> create(
@@ -48,14 +47,6 @@ public class CalendarController {
             @RequestBody BasicCalendarReqDto basicCalendarReqDto
     ) {
         updateCalendarByIdService.execute(id, basicCalendarReqDto);
-        return ResponseEntity.noContent().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(
-            @PathVariable("id") Long id
-    ) {
-        deleteCalendarByIdService.execute(id);
         return ResponseEntity.noContent().build();
     }
 }
