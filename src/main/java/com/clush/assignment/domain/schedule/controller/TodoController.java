@@ -1,8 +1,8 @@
 package com.clush.assignment.domain.schedule.controller;
 
-import com.clush.assignment.domain.schedule.dto.request.BasicTodoReqDto;
+import com.clush.assignment.domain.schedule.dto.request.TodoReqDto;
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
-import com.clush.assignment.domain.schedule.dto.response.BasicTodoResDto;
+import com.clush.assignment.domain.schedule.dto.response.TodoResDto;
 import com.clush.assignment.domain.schedule.service.todo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,30 +24,30 @@ public class TodoController {
 
     @PostMapping
     public ResponseEntity<Void> create(
-            @RequestBody BasicTodoReqDto basicTodoReqDto
+            @RequestBody TodoReqDto todoReqDto
     ) {
-        createTodoService.execute(basicTodoReqDto);
+        createTodoService.execute(todoReqDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
-    public ResponseEntity<List<BasicTodoResDto>> find(
+    public ResponseEntity<List<TodoResDto>> find(
             @RequestBody DateReqDto dateReqDto
     ) {
         return ResponseEntity.ok(queryTodosService.execute(dateReqDto));
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<BasicTodoResDto>> findAll() {
+    public ResponseEntity<List<TodoResDto>> findAll() {
         return ResponseEntity.ok(queryAllTodosService.execute());
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> update(
             @PathVariable("id") Long id,
-            @RequestBody BasicTodoReqDto basicTodoReqDto
+            @RequestBody TodoReqDto todoReqDto
     ) {
-        updateTodoByIdService.execute(id, basicTodoReqDto);
+        updateTodoByIdService.execute(id, todoReqDto);
         return ResponseEntity.noContent().build();
     }
 

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record BasicTodoResDto(
+public record TodoResDto(
         Long id,
         String title,
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -14,9 +14,9 @@ public record BasicTodoResDto(
         Boolean completed
 ) {
 
-    public static List<BasicTodoResDto> toBasicTodoResDtos(List<Todo> todos) {
+    public static List<TodoResDto> toBasicTodoResDtos(List<Todo> todos) {
         return todos.stream()
-                .map(todo -> new BasicTodoResDto(
+                .map(todo -> new TodoResDto(
                         todo.getId(),
                         todo.getTitle(),
                         todo.getDueDateTime(),

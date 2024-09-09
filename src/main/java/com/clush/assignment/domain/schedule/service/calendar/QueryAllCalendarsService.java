@@ -1,6 +1,6 @@
 package com.clush.assignment.domain.schedule.service.calendar;
 
-import com.clush.assignment.domain.schedule.dto.response.BasicCalendarResDto;
+import com.clush.assignment.domain.schedule.dto.response.CalendarResDto;
 import com.clush.assignment.domain.schedule.entity.Calendar;
 import com.clush.assignment.domain.schedule.repository.CalendarRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,9 +14,9 @@ public class QueryAllCalendarsService {
 
     private final CalendarRepository calendarRepository;
 
-    public List<BasicCalendarResDto> execute() {
+    public List<CalendarResDto> execute() {
         List<Calendar> calendars = calendarRepository.findAll();
 
-        return BasicCalendarResDto.toBasicCalendarResDtos(calendars);
+        return CalendarResDto.toBasicCalendarResDtos(calendars);
     }
 }

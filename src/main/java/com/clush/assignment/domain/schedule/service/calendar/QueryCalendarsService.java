@@ -1,7 +1,7 @@
 package com.clush.assignment.domain.schedule.service.calendar;
 
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
-import com.clush.assignment.domain.schedule.dto.response.BasicCalendarResDto;
+import com.clush.assignment.domain.schedule.dto.response.CalendarResDto;
 import com.clush.assignment.domain.schedule.entity.Calendar;
 import com.clush.assignment.domain.schedule.repository.CalendarRepository;
 import com.clush.assignment.domain.schedule.util.LocalDateTimeUtil;
@@ -19,11 +19,11 @@ public class QueryCalendarsService {
     private final CalendarRepository calendarRepository;
 
     @Transactional(readOnly = true)
-    public List<BasicCalendarResDto> execute(DateReqDto dateReqDto) {
+    public List<CalendarResDto> execute(DateReqDto dateReqDto) {
         LocalDate reqDate = dateReqDto.reqDate();
 
         List<Calendar> calendars = calendarRepository.findAllByDueDateTimeBetween(LocalDateTimeUtil.startOfDay(reqDate), LocalDateTimeUtil.endOfDay(reqDate));
 
-        return BasicCalendarResDto.toBasicCalendarResDtos(calendars);
+        return CalendarResDto.toBasicCalendarResDtos(calendars);
     }
 }
