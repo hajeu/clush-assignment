@@ -25,4 +25,14 @@ public final class Calendar extends Schedule {
         super(title, dueDate);
         this.description = description;
     }
+
+    public Calendar(
+            @NonNull Long id,
+            @NonNull String title,
+            String description,
+            @NonNull LocalDateTime dueDate
+    ) {
+        super(id, title, dueDate);
+        this.description = description;
+    }
 }
