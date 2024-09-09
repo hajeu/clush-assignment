@@ -1,4 +1,4 @@
-package com.clush.assignment.domain.schedule.service;
+package com.clush.assignment.domain.schedule.service.todo;
 
 import com.clush.assignment.domain.schedule.dto.response.BasicTodoResDto;
 import com.clush.assignment.domain.schedule.entity.Todo;
