@@ -2,7 +2,6 @@ package com.clush.assignment.domain.schedule.service.calendar;
 
 import com.clush.assignment.domain.schedule.dto.response.CalendarResDto;
 import com.clush.assignment.domain.schedule.entity.Calendar;
-import com.clush.assignment.domain.schedule.entity.Todo;
 import com.clush.assignment.domain.schedule.repository.CalendarRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
