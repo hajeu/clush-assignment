@@ -1,4 +1,4 @@
-package com.clush.assignment.domain.schedule.dto;
+package com.clush.assignment.domain.schedule.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

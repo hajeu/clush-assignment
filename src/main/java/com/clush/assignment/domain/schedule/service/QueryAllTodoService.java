@@ -1,24 +1,22 @@
 package com.clush.assignment.domain.schedule.service;
 
-import com.clush.assignment.domain.schedule.dto.request.BasicTodoReqDto;
+import com.clush.assignment.domain.schedule.dto.response.BasicTodoResDto;
 import com.clush.assignment.domain.schedule.entity.Todo;
 import com.clush.assignment.domain.schedule.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
-public class CreateTodoService {
+public class QueryAllTodoService {
 
     private final TodoRepository todoRepository;
 
-    public void execute(BasicTodoReqDto basicTodoReqDto) {
-        Todo todo = new Todo(
-                basicTodoReqDto.title(),
-                basicTodoReqDto.dueDateTime(),
-                false
-        );
+    public List<BasicTodoResDto> execute() {
+        List<Todo> todos = todoRepository.findAll();
 
-        todoRepository.save(todo);
+        return BasicTodoResDto.toBasicTodoResDtos(todos);
     }
 }
