@@ -1,6 +1,6 @@
 package com.clush.assignment.domain.schedule.service.todo;
 
-import com.clush.assignment.domain.schedule.dto.response.BasicTodoResDto;
+import com.clush.assignment.domain.schedule.dto.response.TodoResDto;
 import com.clush.assignment.domain.schedule.entity.Todo;
 import com.clush.assignment.domain.schedule.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +16,9 @@ public class QueryAllTodosService {
     private final TodoRepository todoRepository;
 
     @Transactional(readOnly = true)
-    public List<BasicTodoResDto> execute() {
+    public List<TodoResDto> execute() {
         List<Todo> todos = todoRepository.findAll();
 
-        return BasicTodoResDto.toBasicTodoResDtos(todos);
+        return TodoResDto.toBasicTodoResDtos(todos);
     }
 }

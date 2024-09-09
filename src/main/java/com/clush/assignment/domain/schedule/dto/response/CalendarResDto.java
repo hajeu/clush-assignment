@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public record BasicCalendarResDto(
+public record CalendarResDto(
         Long id,
         String title,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
@@ -14,9 +14,9 @@ public record BasicCalendarResDto(
         String description
 ) {
 
-    public static List<BasicCalendarResDto> toBasicCalendarResDtos(List<Calendar> calendars) {
+    public static List<CalendarResDto> toBasicCalendarResDtos(List<Calendar> calendars) {
         return calendars.stream()
-                .map(calendar -> new BasicCalendarResDto(
+                .map(calendar -> new CalendarResDto(
                         calendar.getId(),
                         calendar.getTitle(),
                         calendar.getDueDateTime(),
