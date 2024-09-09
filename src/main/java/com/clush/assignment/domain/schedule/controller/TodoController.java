@@ -17,8 +17,8 @@ import java.util.List;
 public class TodoController {
 
     private final CreateTodoService createTodoService;
-    private final QueryTodoService queryTodoService;
-    private final QueryAllTodoService queryAllTodoService;
+    private final QueryTodosService queryTodosService;
+    private final QueryAllTodosService queryAllTodosService;
     private final UpdateTodoByIdService updateTodoByIdService;
     private final UpdateTodoCompletedByIdService updateTodoCompletedByIdService;
     private final DeleteTodoByIdService deleteTodoByIdService;
@@ -35,12 +35,12 @@ public class TodoController {
     public ResponseEntity<List<BasicTodoResDto>> find(
             @RequestBody DateReqDto dateReqDto
     ) {
-        return ResponseEntity.ok(queryTodoService.execute(dateReqDto));
+        return ResponseEntity.ok(queryTodosService.execute(dateReqDto));
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<BasicTodoResDto>> findAll() {
-        return ResponseEntity.ok(queryAllTodoService.execute());
+        return ResponseEntity.ok(queryAllTodosService.execute());
     }
 
     @PutMapping("/{id}")
