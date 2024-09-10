@@ -3,6 +3,7 @@ package com.clush.assignment.domain.schedule.controller;
 import com.clush.assignment.domain.schedule.dto.response.ScheduleResDto;
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
 import com.clush.assignment.domain.schedule.service.*;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ScheduleController {
 
     @GetMapping
     public ResponseEntity<List<ScheduleResDto>> find(
-            @RequestBody DateReqDto dateReqDto
+            @RequestBody @Valid DateReqDto dateReqDto
     ) {
         return ResponseEntity.ok(querySchedulesService.execute(dateReqDto));
     }
