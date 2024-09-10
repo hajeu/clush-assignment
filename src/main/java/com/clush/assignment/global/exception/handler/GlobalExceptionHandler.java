@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
         log.trace("유효성 검증 실패 세부 정보 : ", ex);
         return ResponseEntity
                 .status(ex.getStatusCode())
-                .body(new ExceptionResponse(ex.getMessage()));
+                .body(new ExceptionResponse("데이터 유효성 검증에 실패하였습니다."));
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
         log.trace("존재하지 않는 엔드포인트 세부 정보 : ", ex);
         return ResponseEntity
                 .status(ex.getStatusCode())
-                .body(new ExceptionResponse(ex.getMessage()));
+                .body(new ExceptionResponse("존재하지 않는 엔드포인트에 대한 요청입니다."));
     }
 
     @ExceptionHandler(RuntimeException.class)
