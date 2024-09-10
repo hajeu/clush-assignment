@@ -19,6 +19,7 @@ public class ScheduleController {
     private final DeleteScheduleByIdService deleteScheduleByIdService;
     private final UpdateBookMarkService updateBookMarkService;
     private final QueryBookMarkService queryBookMarkService;
+    private final QuerySuggestionService querySuggestionService;
 
     @GetMapping
     public ResponseEntity<List<ScheduleResDto>> find(
@@ -51,5 +52,10 @@ public class ScheduleController {
     @GetMapping("/book-mark")
     public ResponseEntity<List<ScheduleResDto>> findBookMark() {
         return ResponseEntity.ok(queryBookMarkService.execute());
+    }
+
+    @GetMapping("/suggestion")
+    public ResponseEntity<List<ScheduleResDto>> suggestion() {
+        return ResponseEntity.ok(querySuggestionService.execute());
     }
 }
