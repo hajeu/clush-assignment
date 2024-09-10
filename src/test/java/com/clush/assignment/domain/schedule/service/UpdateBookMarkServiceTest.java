@@ -1,7 +1,6 @@
 package com.clush.assignment.domain.schedule.service;
 
 import com.clush.assignment.domain.schedule.entity.Schedule;
-import com.clush.assignment.domain.schedule.entity.Todo;
 import com.clush.assignment.domain.schedule.repository.ScheduleRepository;
 import com.clush.assignment.global.exception.ExpectedException;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,20 +11,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
-@DisplayName("DeleteScheduleByIdService 클래스의")
-public class DeleteScheduleByIdServiceTest {
+@DisplayName("UpdateBookMarkService 클래스의")
+public class UpdateBookMarkServiceTest {
 
     @Mock
     private ScheduleRepository scheduleRepository;
 
     @InjectMocks
-    private DeleteScheduleByIdService deleteScheduleByIdService;
+    private UpdateBookMarkService updateBookMarkService;
 
     @BeforeEach
     void setUp() {
@@ -42,13 +40,7 @@ public class DeleteScheduleByIdServiceTest {
         @DisplayName("해당 ID의 스케줄이 존재하면")
         class Context_with_existing_schedule {
 
-            private final Schedule existingSchedule = new Todo(
-                    1L,
-                    "투두 제목",
-                    LocalDateTime.now(),
-                    false,
-                    false
-            );
+            private final Schedule existingSchedule = mock(Schedule.class);
 
             @BeforeEach
             void setUp() {
@@ -56,11 +48,11 @@ public class DeleteScheduleByIdServiceTest {
             }
 
             @Test
-            @DisplayName("스케줄을 삭제한다.")
-            void it_delete_the_schedule() {
-                deleteScheduleByIdService.execute(scheduleId);
+            @DisplayName("스케줄의 북마크 상태를 토글한다.")
+            void it_toggle_bookmark_status() {
+                updateBookMarkService.execute(scheduleId);
 
-                verify(scheduleRepository, times(1)).delete(existingSchedule);
+                verify(existingSchedule, times(1)).toggleBookMark();
             }
         }
 
@@ -76,11 +68,11 @@ public class DeleteScheduleByIdServiceTest {
             @Test
             @DisplayName("예외를 던진다.")
             void it_throw_exception() {
-                assertThatThrownBy(() -> deleteScheduleByIdService.execute(scheduleId))
+                assertThatThrownBy(() -> updateBookMarkService.execute(scheduleId))
                         .isInstanceOf(ExpectedException.class)
                         .hasMessageContaining("해당 id의 schedule을 찾을 수 없습니다. id: " + scheduleId);
 
-                verify(scheduleRepository, times(0)).delete(any(Schedule.class));
+                verify(scheduleRepository, times(0)).save(any(Schedule.class));
             }
         }
     }

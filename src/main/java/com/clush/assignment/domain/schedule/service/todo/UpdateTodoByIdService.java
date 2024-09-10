@@ -22,7 +22,8 @@ public class UpdateTodoByIdService {
                 id,
                 todoReqDto.title(),
                 todoReqDto.dueDate().atStartOfDay(),
-                todo.getCompleted()
+                todo.getCompleted(),
+                todo.getBookMark()
         );
 
         todoRepository.save(updatedTodo);

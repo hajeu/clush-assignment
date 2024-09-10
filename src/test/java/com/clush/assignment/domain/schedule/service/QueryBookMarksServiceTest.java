@@ -21,14 +21,14 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@DisplayName("QueryAllSchedulesService 클래스의")
-public class QueryAllSchedulesServiceTest {
+@DisplayName("QueryBookMarksService 클래스의")
+public class QueryBookMarksServiceTest {
 
     @Mock
     private ScheduleRepository scheduleRepository;
 
     @InjectMocks
-    private QueryAllSchedulesService queryAllSchedulesService;
+    private QueryBookMarksService queryBookMarksService;
 
     @BeforeEach
     void setUp() {
@@ -45,26 +45,23 @@ public class QueryAllSchedulesServiceTest {
         void setUp() {
             LocalDateTime now = LocalDateTime.now();
 
-            schedules.add(new Todo(1L, "투두 제목", now, false, false));
-            schedules.add(new Calendar(2L, "캘린더 제목", "캘린더 설명", now, false));
+            schedules.add(new Todo(1L, "북마크된 투두", now, false, true));
+            schedules.add(new Calendar(2L, "북마크 안된 캘린더", "캘린더 설명", now, false));
 
-            when(scheduleRepository.findAll()).thenReturn(schedules);
+            when(scheduleRepository.findAllByBookMarkIsTrue()).thenReturn(List.of(schedules.get(0)));
         }
 
         @Test
-        @DisplayName("모든 스케줄 목록을 반환한다.")
-        void it_return_list_of_all_schedules() {
-            List<ScheduleResDto> result = queryAllSchedulesService.execute();
+        @DisplayName("북마크가 된 스케줄만 반환한다.")
+        void it_return_only_bookmarked_schedules() {
+            List<ScheduleResDto> result = queryBookMarksService.execute();
 
-            assertThat(result).hasSize(2);
+            assertThat(result).hasSize(1);
 
             ScheduleResDto firstSchedule = result.get(0);
-            assertThat(firstSchedule.getTitle()).isEqualTo("투두 제목");
+            assertThat(firstSchedule.getTitle()).isEqualTo("북마크된 투두");
             assertThat(firstSchedule.getType()).isEqualTo(ScheduleType.TODO);
-
-            ScheduleResDto secondSchedule = result.get(1);
-            assertThat(secondSchedule.getTitle()).isEqualTo("캘린더 제목");
-            assertThat(secondSchedule.getType()).isEqualTo(ScheduleType.CALENDAR);
         }
     }
 }
+
