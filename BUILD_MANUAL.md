@@ -5,7 +5,7 @@
 
 프로젝트의 소스 코드를 로컬 환경에 클론합니다.
 ```bash
-https://github.com/hajeu/clush-assignment
+git clone https://github.com/hajeu/clush-assignment
 cd clush-assignment
 ```
 
