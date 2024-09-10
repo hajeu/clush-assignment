@@ -13,8 +13,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -47,9 +49,17 @@ public class UpdateCalendarByIdServiceTest {
         @DisplayName("해당 ID의 캘린더가 존재하면")
         class Context_with_existing_calendar {
 
+            private final Calendar existingCalendar = new Calendar(
+                    calendarId,
+                    "기존의 제목",
+                    "기존의 설명",
+                    LocalDateTime.of(2024, 9, 10, 8 ,15),
+                    false
+            );
+
             @BeforeEach
             void setUp() {
-                when(calendarRepository.existsById(calendarId)).thenReturn(true);
+                when(calendarRepository.findById(calendarId)).thenReturn(Optional.of(existingCalendar));
             }
 
             @Test
