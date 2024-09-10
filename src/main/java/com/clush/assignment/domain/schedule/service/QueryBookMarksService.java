@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class QueryBookMarkService {
+public class QueryBookMarksService {
 
     private final ScheduleRepository scheduleRepository;
 

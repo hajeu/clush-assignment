@@ -28,9 +28,10 @@ public final class Todo extends Schedule {
             @NonNull Long id,
             @NonNull String title,
             @NonNull LocalDateTime dueDateTime,
-            @NonNull Boolean completed
+            @NonNull Boolean completed,
+            @NonNull Boolean bookMark
     ) {
-        super(id, title, dueDateTime);
+        super(id, title, dueDateTime, bookMark);
         this.completed = completed;
     }
 

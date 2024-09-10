@@ -30,9 +30,10 @@ public final class Calendar extends Schedule {
             @NonNull Long id,
             @NonNull String title,
             String description,
-            @NonNull LocalDateTime dueDate
+            @NonNull LocalDateTime dueDate,
+            @NonNull Boolean bookMark
     ) {
-        super(id, title, dueDate);
+        super(id, title, dueDate, bookMark);
         this.description = description;
     }
 }

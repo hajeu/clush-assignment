@@ -51,6 +51,7 @@ public class UpdateTodoByIdServiceTest {
                     todoId,
                     "기존의 제목",
                     LocalDate.of(2024, 9, 9).atStartOfDay(),
+                    false,
                     false
             );
 

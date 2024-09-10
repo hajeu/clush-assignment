@@ -50,8 +50,8 @@ public class QuerySchedulesServiceTest {
 
         @BeforeEach
         void setUp() {
-            schedules.add(new Todo(1L, "투두 제목", startOfDay, false));
-            schedules.add(new Calendar(2L, "캘린더 제목", "캘린더 설명", endOfDay));
+            schedules.add(new Todo(1L, "투두 제목", startOfDay, false, false));
+            schedules.add(new Calendar(2L, "캘린더 제목", "캘린더 설명", endOfDay, false));
 
             when(scheduleRepository.findAllByDueDateTimeBetween(startOfDay, endOfDay)).thenReturn(schedules);
         }
