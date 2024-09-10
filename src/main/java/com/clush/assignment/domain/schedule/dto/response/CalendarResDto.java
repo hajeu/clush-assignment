@@ -11,7 +11,8 @@ public record CalendarResDto(
         String title,
         @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
         LocalDateTime dueDateTime,
-        String description
+        String description,
+        Boolean bookMark
 ) {
 
     public static List<CalendarResDto> toBasicCalendarResDtos(List<Calendar> calendars) {
@@ -20,7 +21,8 @@ public record CalendarResDto(
                         calendar.getId(),
                         calendar.getTitle(),
                         calendar.getDueDateTime(),
-                        calendar.getDescription())
+                        calendar.getDescription(),
+                        calendar.getBookMark())
                 )
                 .toList();
     }

@@ -2,9 +2,7 @@ package com.clush.assignment.domain.schedule.controller;
 
 import com.clush.assignment.domain.schedule.dto.response.ScheduleResDto;
 import com.clush.assignment.domain.schedule.dto.request.DateReqDto;
-import com.clush.assignment.domain.schedule.service.DeleteScheduleByIdService;
-import com.clush.assignment.domain.schedule.service.QueryAllSchedulesService;
-import com.clush.assignment.domain.schedule.service.QuerySchedulesService;
+import com.clush.assignment.domain.schedule.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +17,8 @@ public class ScheduleController {
     private final QuerySchedulesService querySchedulesService;
     private final QueryAllSchedulesService queryAllSchedulesService;
     private final DeleteScheduleByIdService deleteScheduleByIdService;
+    private final UpdateBookMarkService updateBookMarkService;
+    private final QueryBookMarkService queryBookMarkService;
 
     @GetMapping
     public ResponseEntity<List<ScheduleResDto>> find(
@@ -38,5 +38,18 @@ public class ScheduleController {
     ) {
         deleteScheduleByIdService.execute(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/book-mark/{id}")
+    public ResponseEntity<Void> toggleBookMark(
+            @PathVariable("id") Long id
+    ) {
+        updateBookMarkService.execute(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/book-mark")
+    public ResponseEntity<List<ScheduleResDto>> findBookMark() {
+        return ResponseEntity.ok(queryBookMarkService.execute());
     }
 }

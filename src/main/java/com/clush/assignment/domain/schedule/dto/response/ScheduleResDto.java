@@ -19,6 +19,7 @@ public class ScheduleResDto {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dueDateTime;
     private ScheduleType type;
+    private Boolean bookMark;
 
     public static List<ScheduleResDto> toScheduleDtos(List<Schedule> schedules) {
         return schedules.stream()
@@ -29,7 +30,8 @@ public class ScheduleResDto {
                                 todo.getTitle(),
                                 todo.getDueDateTime(),
                                 todo.getCompleted(),
-                                ScheduleType.TODO
+                                ScheduleType.TODO,
+                                todo.getBookMark()
                         );
                     } else if (schedule instanceof Calendar calendar) {
                         return new CalendarDto(
@@ -37,7 +39,8 @@ public class ScheduleResDto {
                                 calendar.getTitle(),
                                 calendar.getDueDateTime(),
                                 calendar.getDescription(),
-                                ScheduleType.CALENDAR
+                                ScheduleType.CALENDAR,
+                                calendar.getBookMark()
                         );
                     }
                     throw new IllegalArgumentException("잘못된 스케줄 타입입니다.");

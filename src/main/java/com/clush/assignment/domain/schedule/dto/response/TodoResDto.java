@@ -11,7 +11,8 @@ public record TodoResDto(
         String title,
         @JsonFormat(pattern = "yyyy-MM-dd")
         LocalDateTime dueDateTime,
-        Boolean completed
+        Boolean completed,
+        Boolean bookMark
 ) {
 
     public static List<TodoResDto> toBasicTodoResDtos(List<Todo> todos) {
@@ -20,7 +21,8 @@ public record TodoResDto(
                         todo.getId(),
                         todo.getTitle(),
                         todo.getDueDateTime(),
-                        todo.getCompleted())
+                        todo.getCompleted(),
+                        todo.getBookMark())
                 )
                 .toList();
     }

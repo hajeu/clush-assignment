@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 public class TodoDto extends ScheduleResDto {
     private final Boolean completed;
 
-    public TodoDto(Long id, String title, LocalDateTime dueDateTime, Boolean completed, ScheduleType scheduleType) {
-        super(id, title, dueDateTime, scheduleType);
+    public TodoDto(Long id, String title, LocalDateTime dueDateTime, Boolean completed, ScheduleType scheduleType, Boolean bookMark) {
+        super(id, title, dueDateTime, scheduleType, bookMark);
         this.completed = completed;
     }
 }

@@ -27,12 +27,16 @@ public abstract class Schedule {
     @NotNull
     private LocalDateTime dueDateTime;
 
+    @NotNull
+    private Boolean bookMark;
+
     public Schedule(
             @NonNull String title,
             @NonNull LocalDateTime dueDateTime
     ) {
         this.title = title;
         this.dueDateTime = dueDateTime;
+        this.bookMark = false;
     }
 
     public Schedule(
@@ -43,6 +47,10 @@ public abstract class Schedule {
         this.id = id;
         this.title = title;
         this.dueDateTime = dueDateTime;
+    }
+
+    public void toggleBookMark() {
+        this.bookMark = !this.bookMark;
     }
 }
 

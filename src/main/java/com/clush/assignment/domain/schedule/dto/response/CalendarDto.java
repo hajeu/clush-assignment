@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 public class CalendarDto extends ScheduleResDto {
     private final String description;
 
-    public CalendarDto(Long id, String title, LocalDateTime dueDateTime, String description, ScheduleType scheduleType) {
-        super(id, title, dueDateTime, scheduleType);
+    public CalendarDto(Long id, String title, LocalDateTime dueDateTime, String description, ScheduleType scheduleType, Boolean bookMark) {
+        super(id, title, dueDateTime, scheduleType, bookMark);
         this.description = description;
     }
 }
