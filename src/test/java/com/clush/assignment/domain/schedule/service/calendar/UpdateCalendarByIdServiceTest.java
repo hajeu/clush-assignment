@@ -75,7 +75,7 @@ public class UpdateCalendarByIdServiceTest {
             void it_throw_exception() {
                 assertThatThrownBy(() -> updateCalendarByIdService.execute(calendarId, calendarReqDto))
                         .isInstanceOf(ExpectedException.class)
-                        .hasMessageContaining("해당 id의 calendar가 존재하지 않습니다. id: " + calendarId);
+                        .hasMessageContaining("해당 id의 calendar를 찾을 수 없습니다. id: " + calendarId);
 
                 verify(calendarRepository, times(0)).save(any(Calendar.class));
             }
