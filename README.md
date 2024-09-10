@@ -18,4 +18,9 @@ JPA는 Java Persistence API의 약자로 자바 진영에서 ORM 기술 표준�
 [API명세서](https://four-zone-469.notion.site/Clush-Assignment-Schedule-API-53f2b48f64844ad2b62f7249ae32563c)는 여기를 참고하세요.
 
 ## CRUD외 추가 업무 API
-구현 예정
+
+북마크(즐겨찾기) 설정 API
+
+북마크(즐겨찾기) 반환 API
+
+스케줄 추천 API
