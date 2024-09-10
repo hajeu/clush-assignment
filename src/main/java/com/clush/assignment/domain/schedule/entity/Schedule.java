@@ -42,11 +42,13 @@ public abstract class Schedule {
     public Schedule(
             @NonNull Long id,
             @NonNull String title,
-            @NonNull LocalDateTime dueDateTime
+            @NonNull LocalDateTime dueDateTime,
+            @NonNull Boolean bookMark
     ) {
         this.id = id;
         this.title = title;
         this.dueDateTime = dueDateTime;
+        this.bookMark = bookMark;
     }
 
     public void toggleBookMark() {
